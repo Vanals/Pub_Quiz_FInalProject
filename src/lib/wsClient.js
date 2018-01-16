@@ -86,6 +86,14 @@ class WsClient {
     });
   };
 
+  sendQuizStart(json_obj = JSON) {
+    this._ws.send(this._quizStartMessage(json_obj));
+  }
+
+  _quizStartMessage(json_obj) {
+    return json_obj.stringify({ type: "startQuiz" })
+  }
+
   sendQuizEnd(json_obj = JSON) {
     this._ws.send(this._quizEndMessage(json_obj));
   };
@@ -129,7 +137,6 @@ function buildWsClient(component, url, constructor = newWsClient,
   let ws = ws_constructor(url);
   let client = constructor(component, ws);
   client.configure();
-  client.start();
   return client;
 };
 
