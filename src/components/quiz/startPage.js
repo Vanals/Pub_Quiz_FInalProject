@@ -13,7 +13,7 @@ class StartPage extends Component {
       <div>
       <h1 id='titleApp'>Pub-Quiz</h1>
       <input className='textArea' type='text' placeholder='Team Name' id='team-name'/>
-      <button id='startQuizButton' type="button" onClick={this.props.hideFunction} >Start QUIZ!</button>
+      <button id='startQuizButton' type="button" onClick={this.props.hideFunction} disabled={this.props.disabled}>Start QUIZ!</button>
       </div>
       </ToggleDisplay>
     )
