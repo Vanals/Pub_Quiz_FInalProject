@@ -39,7 +39,8 @@ class Quiz extends Component {
           name: response.data.name,
           questions: response.data.questions,
           questionsRecieved: true,
-          disabledButton: false
+          disabledButton: false,
+          client: client.buildWsClient(this, 'ws://localhost:5000/ws/1')
         });
       })
       .catch(function (error) {
@@ -52,7 +53,7 @@ class Quiz extends Component {
       show: true,
       teamName: document.getElementById('team-name').value,
       // client: client.buildWsClient(this, 'ws://pub-quiz-api.herokuapp.com/')
-      client: client.buildWsClient(this, 'ws://localhost:5000/ws/1')
+      // client: client.buildWsClient(this, 'ws://localhost:5000/ws/1')
     });
   };
 
