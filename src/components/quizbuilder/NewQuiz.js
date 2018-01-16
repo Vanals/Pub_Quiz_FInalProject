@@ -84,8 +84,8 @@ class NewQuiz extends Component {
   }
 
   submitQuiz = () => {
-    axios.post('https://pub-quiz-api.herokuapp.com/quiz', {
-    // axios.post('http://localhost:5000/quiz', {
+    // axios.post('https://pub-quiz-api.herokuapp.com/quiz', {
+    axios.post('http://localhost:5000/quiz', {
       name: this.state.name,
       questions: this.state.questions
     },

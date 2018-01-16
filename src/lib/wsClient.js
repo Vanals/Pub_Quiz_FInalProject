@@ -3,7 +3,7 @@
 const URL = 'ws://localhost:5000';
 
 class WsClient {
-  constructor(component, ws, timeout = 10000) {
+  constructor(component, ws, timeout = 2500) {
     this._component = component;
     this._ws = ws;
     this._timeout = timeout;
@@ -13,12 +13,16 @@ class WsClient {
 
   configure() {
     this._ws.onmessage = this.getRoute(this);
-    this.startInterval(this._timeout);
   };
+
+  start() {
+    this.startInterval(this._timeout);
+  }
 
   getRoute(self) {
     return function route(event, json_obj = JSON) {
       let data = json_obj.parse(event.data);
+
       switch(data.type) {
         case 'question':
           self.updateQuestion(parseInt(data.question), parseInt(data.time));
@@ -75,9 +79,9 @@ class WsClient {
   };
 
   _questionIdMessage(id, json_obj) {
-    return json_obj.stringify({ 
-      type: "question", 
-      question: id, 
+    return json_obj.stringify({
+      type: "question",
+      question: id,
       time: this._timeout
     });
   };
@@ -125,6 +129,7 @@ function buildWsClient(component, url, constructor = newWsClient,
   let ws = ws_constructor(url);
   let client = constructor(component, ws);
   client.configure();
+  client.start();
   return client;
 };
 

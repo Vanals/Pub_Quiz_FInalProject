@@ -32,8 +32,8 @@ class Quiz extends Component {
     let quizId = this.props.match.params.quizId;
     let self = this;
 
-    axios.get(`http://pub-quiz-api.herokuapp.com/quiz/${quizId}`)
-    // axios.get(`http://localhost:5000/quiz/${quizId}`)
+    // axios.get(`http://pub-quiz-api.herokuapp.com/quiz/${quizId}`)
+    axios.get(`http://localhost:5000/quiz/${quizId}`)
       .then(function (response) {
         self.setState({
           name: response.data.name,
@@ -51,8 +51,8 @@ class Quiz extends Component {
     this.setState({
       show: true,
       teamName: document.getElementById('team-name').value,
-      client: client.buildWsClient(this, 'ws://pub-quiz-api.herokuapp.com/')
-      // client: client.buildWsClient(this, 'ws://localhost:5000')
+      // client: client.buildWsClient(this, 'ws://pub-quiz-api.herokuapp.com/')
+      client: client.buildWsClient(this, 'ws://localhost:5000/ws/1')
     });
   };
 
