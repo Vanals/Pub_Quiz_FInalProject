@@ -16,6 +16,7 @@ class WsClient {
   };
 
   start() {
+    this.sendQuizStart()
     this.startInterval(this._timeout);
   }
 

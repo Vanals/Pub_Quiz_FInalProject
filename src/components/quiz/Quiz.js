@@ -55,6 +55,7 @@ class Quiz extends Component {
       // client: client.buildWsClient(this, 'ws://pub-quiz-api.herokuapp.com/')
       // client: client.buildWsClient(this, 'ws://localhost:5000/ws/1')
     });
+    this.state.client.start() 
   };
 
   updateScores(scores) {
